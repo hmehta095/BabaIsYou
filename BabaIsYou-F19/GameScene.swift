@@ -30,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.flag.physicsBody?.affectedByGravity = false
                 self.flag.physicsBody?.categoryBitMask = 1
         //        self.flag.physicsBody?.collisionBitMask = 0
-                self.flag.physicsBody?.contactTestBitMask = 4
+//                self.flag.physicsBody?.contactTestBitMask = 0
         
         
         self.player = self.childNode(withName: "baba") as! SKSpriteNode
@@ -158,7 +158,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     stick.physicsBody?.affectedByGravity = false
                     stick.physicsBody?.categoryBitMask = 128
                     stick.physicsBody?.collisionBitMask = 0
-                    print("x")
+//                    print("x")
                 }
             }
             else {
@@ -173,16 +173,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         }else{
-//             self.enumerateChildNodes(withName: "wall") {
-//                            (node, stop) in
-//                            let stick = node as! SKSpriteNode
-//                            stick.physicsBody = SKPhysicsBody(rectangleOf: stick.size)
-//                            stick.physicsBody?.affectedByGravity = false
-//                            stick.physicsBody?.categoryBitMask = 128
-//            //                stick.physicsBody?.collisionBitMask = 0
-//
-//        }
+           self.enumerateChildNodes(withName: "wall") {
+                            (node, stop) in
+                            let stick = node as! SKSpriteNode
+                            stick.physicsBody = SKPhysicsBody(rectangleOf: stick.size)
+                            stick.physicsBody?.affectedByGravity = false
+                            stick.physicsBody?.categoryBitMask = 128
+            //                stick.physicsBody?.collisionBitMask = 0
+//            print("z")
+
         }
+        }
+        
+        if(self.winBlock.frame.intersects(self.iBlock.frame) == true){
+            if(self.flagBlock.frame.intersects(self.iBlock.frame) == true){
+                self.flag.physicsBody?.contactTestBitMask = 4
+//                print(true)
+                
+            }
+            
+        }
+        
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
