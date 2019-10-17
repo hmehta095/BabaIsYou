@@ -15,6 +15,7 @@
 		05A5598B2358913600FFE86B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A559892358913600FFE86B /* Main.storyboard */; };
 		05A5598D2358913600FFE86B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05A5598C2358913600FFE86B /* Assets.xcassets */; };
 		05A559902358913600FFE86B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A5598E2358913600FFE86B /* LaunchScreen.storyboard */; };
+		BA129AD72358EDB30086CB6A /* WinScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA129AD62358EDB30086CB6A /* WinScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		05A5598C2358913600FFE86B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05A5598F2358913600FFE86B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05A559912358913600FFE86B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA129AD62358EDB30086CB6A /* WinScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				05A559832358913600FFE86B /* Actions.sks */,
 				05A559852358913600FFE86B /* GameScene.swift */,
 				05A559872358913600FFE86B /* GameViewController.swift */,
+				BA129AD62358EDB30086CB6A /* WinScreen.swift */,
 				05A559892358913600FFE86B /* Main.storyboard */,
 				05A5598C2358913600FFE86B /* Assets.xcassets */,
 				05A5598E2358913600FFE86B /* LaunchScreen.storyboard */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA129AD72358EDB30086CB6A /* WinScreen.swift in Sources */,
 				05A559862358913600FFE86B /* GameScene.swift in Sources */,
 				05A559882358913600FFE86B /* GameViewController.swift in Sources */,
 				05A559802358913600FFE86B /* AppDelegate.swift in Sources */,

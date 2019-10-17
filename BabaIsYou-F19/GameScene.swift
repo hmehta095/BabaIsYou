@@ -33,6 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                self.flag.physicsBody?.contactTestBitMask = 0
         
         
+        
         self.player = self.childNode(withName: "baba") as! SKSpriteNode
         
         self.player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
@@ -136,11 +137,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        
                
                if(nodeA!.name == "flag" && nodeB!.name == "baba"){
-                   
+                   let winScene = WinScreen(size: self.size)
+                   let transitionEffect = SKTransition.flipVertical(withDuration: 2)
+                   self.view?.presentScene(winScene,transition: transitionEffect)
                   
                 print("win")
                }
                 if(nodeA!.name == "baba" && nodeB!.name == "flag"){
+                    let winScene = WinScreen(size: self.size)
+                    let transitionEffect = SKTransition.flipVertical(withDuration: 2)
+                    self.view?.presentScene(winScene,transition: transitionEffect)
                     print("win")
         }
         
@@ -181,6 +187,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             stick.physicsBody?.categoryBitMask = 128
             //                stick.physicsBody?.collisionBitMask = 0
 //            print("z")
+            self.player.physicsBody?.collisionBitMask = 321
+            
 
         }
         }
@@ -189,6 +197,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if(self.flagBlock.frame.intersects(self.iBlock.frame) == true){
                 self.flag.physicsBody?.contactTestBitMask = 4
 //                print(true)
+                self.player = self.childNode(withName: "baba") as! SKSpriteNode
+                        
+                        self.player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
+                        self.player.physicsBody?.affectedByGravity = false
+                        self.player.physicsBody?.categoryBitMask = 4
+                        self.player.physicsBody?.collisionBitMask = 321
+                //        self.player.physicsBody?.contactTestBitMask = 0
+                       
                 
             }
             
