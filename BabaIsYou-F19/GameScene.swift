@@ -29,6 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.flag.physicsBody = SKPhysicsBody(rectangleOf: flag.size)
                 self.flag.physicsBody?.affectedByGravity = false
                 self.flag.physicsBody?.categoryBitMask = 1
+                self.flag.physicsBody?.collisionBitMask = 0
         //        self.flag.physicsBody?.collisionBitMask = 0
 //                self.flag.physicsBody?.contactTestBitMask = 0
         
