@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var stopBlock:SKSpriteNode!
     var wallBlock:SKSpriteNode!
     var isBlock:SKSpriteNode!
+    var iBlock:SKSpriteNode!
     var winBlock:SKSpriteNode!
     var flagBlock:SKSpriteNode!
     var flag:SKSpriteNode!
@@ -88,13 +89,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                        self.isBlock.physicsBody?.categoryBitMask = 32
                        self.isBlock.physicsBody?.collisionBitMask = 0
                        self.isBlock.physicsBody?.contactTestBitMask = 344
-        self.isBlock = self.childNode(withName: "iblock") as! SKSpriteNode
+        self.iBlock = self.childNode(withName: "iblock") as! SKSpriteNode
         
-        self.isBlock.physicsBody = SKPhysicsBody(rectangleOf: isBlock.size)
-        self.isBlock.physicsBody?.affectedByGravity = false
-        self.isBlock.physicsBody?.categoryBitMask = 32
-        self.isBlock.physicsBody?.collisionBitMask = 0
-        self.isBlock.physicsBody?.contactTestBitMask = 344
+        self.iBlock.physicsBody = SKPhysicsBody(rectangleOf: isBlock.size)
+        self.iBlock.physicsBody?.affectedByGravity = false
+        self.iBlock.physicsBody?.categoryBitMask = 32
+        self.iBlock.physicsBody?.collisionBitMask = 0
+        self.iBlock.physicsBody?.contactTestBitMask = 344
                
         
         self.winBlock = self.childNode(withName: "winblock") as! SKSpriteNode
@@ -115,6 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+        
     }
    
     func didBegin(_ contact: SKPhysicsContact) {
@@ -126,21 +128,61 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                    return
                }
                
-               
+               if(nodeA!.name == "wall" && nodeB!.name == "isblock"){
+                   
+                  
+                print("wall and is")
+               }
+       
                
                if(nodeA!.name == "flag" && nodeB!.name == "baba"){
                    
                   
                 print("win")
                }
-        if(nodeA!.name == "baba" && nodeB!.name == "flag"){
-            print("win")
+                if(nodeA!.name == "baba" && nodeB!.name == "flag"){
+                    print("win")
         }
         
     }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+        if (self.stopBlock.frame.intersects(self.isBlock.frame) == true){
+            if(self.isBlock.frame.intersects(self.wallBlock.frame) == true){
+                self.enumerateChildNodes(withName: "wall") {
+                    (node, stop) in
+                    let stick = node as! SKSpriteNode
+                    stick.physicsBody = SKPhysicsBody(rectangleOf: stick.size)
+                    stick.physicsBody?.affectedByGravity = false
+                    stick.physicsBody?.categoryBitMask = 128
+                    stick.physicsBody?.collisionBitMask = 0
+                    print("x")
+                }
+            }
+            else {
+                self.enumerateChildNodes(withName: "wall") {
+                (node, stop) in
+                let stick = node as! SKSpriteNode
+                stick.physicsBody = SKPhysicsBody(rectangleOf: stick.size)
+                stick.physicsBody?.affectedByGravity = false
+                stick.physicsBody?.categoryBitMask = 128
+//                stick.physicsBody?.collisionBitMask = 0
+                    print("y")
+            }
+        }
+        }else{
+//             self.enumerateChildNodes(withName: "wall") {
+//                            (node, stop) in
+//                            let stick = node as! SKSpriteNode
+//                            stick.physicsBody = SKPhysicsBody(rectangleOf: stick.size)
+//                            stick.physicsBody?.affectedByGravity = false
+//                            stick.physicsBody?.categoryBitMask = 128
+//            //                stick.physicsBody?.collisionBitMask = 0
+//
+//        }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
