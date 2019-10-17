@@ -164,17 +164,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     stick.physicsBody?.affectedByGravity = false
                     stick.physicsBody?.categoryBitMask = 128
                     stick.physicsBody?.collisionBitMask = 0
-//                    print("x")
+                    print("x")
                 }
             }
             else {
                 self.enumerateChildNodes(withName: "wall") {
-                (node, stop) in
-                let stick = node as! SKSpriteNode
-                stick.physicsBody = SKPhysicsBody(rectangleOf: stick.size)
-                stick.physicsBody?.affectedByGravity = false
-                stick.physicsBody?.categoryBitMask = 128
-//                stick.physicsBody?.collisionBitMask = 0
+                        (node, stop) in
+                                   let stick = node as! SKSpriteNode
+                                   stick.physicsBody = SKPhysicsBody(rectangleOf: stick.size)
+                                   stick.physicsBody?.affectedByGravity = false
+                                   stick.physicsBody?.categoryBitMask = 0
+                                   stick.physicsBody?.collisionBitMask = 0
+                                   stick.physicsBody?.isDynamic=false
+                   stick.physicsBody?.allowsRotation=false
+                   stick.physicsBody?.allContactedBodies()
                     print("y")
             }
         }
@@ -184,10 +187,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             let stick = node as! SKSpriteNode
                             stick.physicsBody = SKPhysicsBody(rectangleOf: stick.size)
                             stick.physicsBody?.affectedByGravity = false
-                            stick.physicsBody?.categoryBitMask = 128
-            //                stick.physicsBody?.collisionBitMask = 0
-//            print("z")
-            self.player.physicsBody?.collisionBitMask = 321
+                            stick.physicsBody?.categoryBitMask = 0
+                            stick.physicsBody?.collisionBitMask = 0
+                            stick.physicsBody?.isDynamic=false
+            stick.physicsBody?.allowsRotation=false
+            stick.physicsBody?.allContactedBodies()
+            print("z")
+            
             
 
         }
