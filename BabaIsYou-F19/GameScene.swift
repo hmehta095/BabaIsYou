@@ -87,14 +87,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                        self.isBlock.physicsBody?.affectedByGravity = false
                        self.isBlock.physicsBody?.categoryBitMask = 32
                        self.isBlock.physicsBody?.collisionBitMask = 0
-                       self.isBlock.physicsBody?.contactTestBitMask = 0
+                       self.isBlock.physicsBody?.contactTestBitMask = 344
         self.isBlock = self.childNode(withName: "iblock") as! SKSpriteNode
         
         self.isBlock.physicsBody = SKPhysicsBody(rectangleOf: isBlock.size)
         self.isBlock.physicsBody?.affectedByGravity = false
         self.isBlock.physicsBody?.categoryBitMask = 32
         self.isBlock.physicsBody?.collisionBitMask = 0
-        self.isBlock.physicsBody?.contactTestBitMask = 0
+        self.isBlock.physicsBody?.contactTestBitMask = 344
                
         
         self.winBlock = self.childNode(withName: "winblock") as! SKSpriteNode
@@ -119,6 +119,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     func didBegin(_ contact: SKPhysicsContact) {
         print("Something collided!")
+                let nodeA = contact.bodyA.node
+                let nodeB = contact.bodyB.node
+               
+               if (nodeA == nil || nodeB == nil) {
+                   return
+               }
+               
+               
+               
+               if(nodeA!.name == "flag" && nodeB!.name == "baba"){
+                   
+                  
+                print("win")
+               }
+        if(nodeA!.name == "baba" && nodeB!.name == "flag"){
+            print("win")
+        }
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
