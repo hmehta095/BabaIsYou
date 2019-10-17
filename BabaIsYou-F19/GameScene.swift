@@ -114,6 +114,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             stick.physicsBody?.affectedByGravity = false
             stick.physicsBody?.categoryBitMask = 128
             stick.physicsBody?.collisionBitMask = 0
+            stick.physicsBody?.contactTestBitMask = 4
+            
         }
         
         
@@ -215,6 +217,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         }
+        
+        if (self.wallBlock.frame.intersects(self.isBlock.frame) == true){
+            if (self.winBlock.frame.intersects(self.isBlock.frame) == true){
+                
+                print("yo")
+                 self.enumerateChildNodes(withName: "wall") {
+                           (node, stop) in
+                           let stick = node as! SKSpriteNode
+                           stick.physicsBody = SKPhysicsBody(rectangleOf: stick.size)
+                           stick.physicsBody?.affectedByGravity = false
+                           stick.physicsBody?.categoryBitMask = 128
+                           stick.physicsBody?.collisionBitMask = 0
+                       }
+                
+            }
+            
+        }
+        
+        
         
         
     }
